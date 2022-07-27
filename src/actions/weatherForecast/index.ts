@@ -1,4 +1,7 @@
 import { ActionCreatorsMapObject, Dispatch } from "redux";
+import { CountryCoordinates, CountryNames, Forecast } from "../../models";
+import { ApiWeatherForecastProvider } from "../../providers";
+import { apiKey } from "../../resources/ApiKey";
 
 export const weatherActionsTypes = {
     getWeatherForecastLoading: "GET_WEATHER_FORECAST_LOADING",
@@ -7,13 +10,21 @@ export const weatherActionsTypes = {
 };
 
 export interface WeatherForecastActionCreator extends ActionCreatorsMapObject {
-    getWeatherForecast: () => (dispatch: Dispatch) => any;
+    getWeatherForecast: (countryCoordinates: CountryCoordinates, countryName: CountryNames) => (dispatch: Dispatch) => any;
 }
 
 export const weatherForecastActionCreator: WeatherForecastActionCreator = {
-    getWeatherForecast() {
+    getWeatherForecast(countryCoordinates: CountryCoordinates, countryName: CountryNames) {
         return async (dispatch: Dispatch) => {
             dispatch({type: weatherActionsTypes.getWeatherForecastLoading});
+
+            const apiWeatherForecastProvider = new ApiWeatherForecastProvider(`https://api.openweathermap.org/data/2.5`, apiKey);
+            try {
+                const forecastData: Forecast = await apiWeatherForecastProvider.getCurrentWeather(countryCoordinates);
+                dispatch({type: weatherActionsTypes.getWeatherForecastSuccessful, key: countryName, weatherForecastData: forecastData})
+            } catch(e) {
+                console.log(e);
+            }
         }
     },
 }
