@@ -66,9 +66,9 @@ export interface ForecastWind {
 
 export interface WeatherForecast {
     isWeatherForecastLoading: boolean;
-    weatherForecastData: WeatherForecastData | null;
+    weatherForecastData: WeatherForecastData | undefined;
 }
 
 export type WeatherForecastData = {
-    [key in CountryNames]: Forecast | null;
+    [key in CountryNames]: Forecast;
 }

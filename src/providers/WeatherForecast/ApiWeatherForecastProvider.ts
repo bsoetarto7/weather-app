@@ -15,7 +15,7 @@ export class ApiWeatherForecastProvider implements WeatherForecastProvider {
             method: 'GET',
         };
         
-        const response = await fetch(`${this.openWeatherApiUrl}/forecast?lat=${countryCoordinates.lat}&lon=${countryCoordinates.lon}&appid=${this.openWeatherApiKey}`, options)
+        const response = await fetch(`${this.openWeatherApiUrl}/forecast?lat=${countryCoordinates.lat}&lon=${countryCoordinates.lon}&units=metric&appid=${this.openWeatherApiKey}`, options)
         let json;
         try {
             json = await response.json();

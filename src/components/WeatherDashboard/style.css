@@ -1,0 +1,10 @@
+.dashboardContainer {
+    border: solid 5px #fff;
+    border-radius: 5px;
+    box-shadow: inset;
+}
+
+.forecastContainer {
+    display: flex;
+    justify-content: space-evenly;
+}

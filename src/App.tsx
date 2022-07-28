@@ -8,15 +8,20 @@ import {
     CountryNames,
     WeatherForecastData,
 } from "./models";
-import { State } from "./store";
+import { State as StoreState } from "./store";
+import { CountrySelector, WeatherDahsboard } from "./components";
 
 export interface StateProps {
     isWeatherForecastLoading: boolean;
-    weatherForecastData: WeatherForecastData | null
+    weatherForecastData?: WeatherForecastData;
 }
 
 export interface DispatchProps {
     getWeatherForecast: (countryCoordinates: CountryCoordinates, countryName: CountryNames) => (dispatch: any) => any;
+}
+
+interface State {
+    countrySelected: CountryNames;
 }
 
 const countryLocation: CountryLocation = {
@@ -34,8 +39,15 @@ const countryLocation: CountryLocation = {
     },
 };
 
-export class App extends React.Component<StateProps & DispatchProps> {
+export class App extends React.Component<StateProps & DispatchProps, State> {
   
+    constructor(props: StateProps & DispatchProps){
+        super(props);
+        this.state = {
+            countrySelected: CountryNames.VANCOUVER
+        }
+    }
+
     public componentDidMount() {
         const {
         isWeatherForecastLoading,
@@ -43,21 +55,40 @@ export class App extends React.Component<StateProps & DispatchProps> {
         getWeatherForecast,
         } = this.props;
 
+        const {
+            countrySelected,
+        } = this.state;
+
         if(!isWeatherForecastLoading && !weatherForecastData) {
-            getWeatherForecast(countryLocation[CountryNames.VANCOUVER], CountryNames.VANCOUVER);
+            getWeatherForecast(countryLocation[countrySelected], countrySelected);
         }
     }
 
-  public render() {
-    return (
-        <div className="App">
-        
-        </div>
-    );
-  }
+    public render() {
+        return (
+            <div className="App">
+                <div className="container">
+                    <CountrySelector handleCountrySelect={this.handleCountrySelected} countrySelected={this.state.countrySelected}/>
+                    {
+                        !!this.props.weatherForecastData && this.props.weatherForecastData[this.state.countrySelected] && 
+                        <WeatherDahsboard countryWeatherData={this.props.weatherForecastData[this.state.countrySelected]}/>
+                    }
+                </div>
+            </div>
+        );
+    }
+
+    private handleCountrySelected = (countrySelected: CountryNames) => {
+        if(!this.props.weatherForecastData || !this.props.weatherForecastData[countrySelected]) {
+            this.props.getWeatherForecast(countryLocation[countrySelected], countrySelected);
+        } 
+        this.setState({
+            countrySelected,
+        });
+    }
 }
 
-const mapStateToProps = (state: State): StateProps => ({
+const mapStateToProps = (state: StoreState): StateProps => ({
     isWeatherForecastLoading: state.weatherForecast.isWeatherForecastLoading,
     weatherForecastData: state.weatherForecast.weatherForecastData,
 });

@@ -1,0 +1,19 @@
+.currentWeatherContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 32px;
+    box-sizing: border-box;
+    border: 2px solid #fff;
+}
+
+.currentWeatherInformation {
+    display: flex;
+    justify-content: center;
+}
+
+.weatherDate {
+    text-align: center;
+    margin-top: 0;
+}

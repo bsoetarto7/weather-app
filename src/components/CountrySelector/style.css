@@ -1,0 +1,27 @@
+.countrySelectorContainer {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.countrySelectorBtn {
+    background: transparent;
+    border: none;
+    margin: 0 8px;
+    font-size: 24px;
+    color: #5C5E62;
+}
+
+.btnActive {
+    color: #62B1E8;
+}
+
+.countrySelectorBtn:hover {
+    cursor: pointer;
+    color: #62B1E8;
+}
+
+.countrySelectorBtn.btnActive:hover {
+    cursor: default;
+    text-decoration: none;
+}

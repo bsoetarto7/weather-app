@@ -4,7 +4,7 @@ import { WeatherForecast } from "../../models";
 
 export const initialWeatherForecastState: WeatherForecast = {
     isWeatherForecastLoading: false,
-    weatherForecastData: null,
+    weatherForecastData: undefined,
 }
 
 export const weatherForecastReducer = (state = initialWeatherForecastState, actions: any) => {
@@ -19,6 +19,7 @@ export const weatherForecastReducer = (state = initialWeatherForecastState, acti
                 ...state,
                 isWeatherForecastLoading: false,
                 weatherForecastData: {
+                    ...state.weatherForecastData,
                     [actions.key]: actions.weatherForecastData,
                 },
             };
