@@ -1,7 +1,6 @@
 import { ActionCreatorsMapObject, Dispatch } from "redux";
 import { CountryCoordinates, CountryNames, Forecast } from "../../models";
 import { ApiWeatherForecastProvider } from "../../providers";
-import { apiKey } from "../../resources/ApiKey";
 
 export const weatherActionsTypes = {
     getWeatherForecastLoading: "GET_WEATHER_FORECAST_LOADING",
@@ -18,7 +17,7 @@ export const weatherForecastActionCreator: WeatherForecastActionCreator = {
         return async (dispatch: Dispatch) => {
             dispatch({type: weatherActionsTypes.getWeatherForecastLoading});
 
-            const apiWeatherForecastProvider = new ApiWeatherForecastProvider(`https://api.openweathermap.org/data/2.5`, apiKey);
+            const apiWeatherForecastProvider = new ApiWeatherForecastProvider(`https://api.openweathermap.org/data/2.5`, process.env.REACT_APP_WEATHER_API_KEY || "");
             try {
                 const forecastData: Forecast = await apiWeatherForecastProvider.getCurrentWeather(countryCoordinates);
                 dispatch({type: weatherActionsTypes.getWeatherForecastSuccessful, key: countryName, weatherForecastData: forecastData})

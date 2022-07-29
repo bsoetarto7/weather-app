@@ -1,8 +1,9 @@
 .App {
-    background-color: #EEF6FB;
+    background-color: #c6e1f1;
     width: 100vw;
     height: 100vh;
     padding-top: 60px;
+    box-sizing: border-box;
 }
 
 .container {

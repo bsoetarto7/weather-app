@@ -2,29 +2,26 @@
 
 Weather app that displays the weather for 3 different cities
 
-## Available Scripts
+&nbsp;
 
-In the project directory, you can run:
+### Follow the following steps to run this application locally
 
-### `npm start`
+1. Install latest dependencies.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+    $ npm install
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+2. Add .env.local file to project root folder. You can just execute `cp env.local .env.local` just to do that. Place your OpenWeather API key in the `.env.local` file.
 
-### `npm test`
+3. Start the app.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+    $ npm start
+```
 
-### `npm run build`
+&nbsp;
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Note
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+You will need to sign up to OpenWeather to generate you own API key in order to run this app locally. Please visit their website https://openweathermap.org/guide to get more information.

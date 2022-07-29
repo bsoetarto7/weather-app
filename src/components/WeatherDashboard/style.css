@@ -1,7 +1,7 @@
 .dashboardContainer {
     border: solid 5px #fff;
     border-radius: 5px;
-    box-shadow: inset;
+    box-shadow: 0 0 16px 0 rgba(0,0,0,0.48);
 }
 
 .forecastContainer {

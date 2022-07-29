@@ -3,9 +3,44 @@
     justify-content: center;
     flex-direction: column;
     width: 100%;
-    padding: 32px;
+    padding: 48px 32px;
     box-sizing: border-box;
     border: 2px solid #fff;
+}
+
+.currentWeatherForecastContainer {
+    padding: 12px 32px;
+}
+
+.currentWeatherInformation .weatherIcon {
+    margin-right: 16px;
+}
+
+.currentWeatherInformation .weatherTemperature {
+    margin: 0 0 8px;
+    font-size: 36px;
+}
+
+.currentWeatherInformation.currentWeatherForecastFormat .weatherIcon {
+    margin: 0 0 16px;
+}
+
+.currentWeatherInformation.currentWeatherForecastFormat .weatherTemperature {
+    font-size: 20px;
+}
+
+.weatherTemperature, .weatherCondition {
+    text-align: center;
+}
+
+.weatherCondition {
+    font-size: 24px;
+    margin: 0 0 16px;
+}
+
+.weatherIcon {
+    display: flex;
+    align-items: center;
 }
 
 .currentWeatherInformation {
@@ -13,7 +48,40 @@
     justify-content: center;
 }
 
-.weatherDate {
+.weatherDate, .weatherTime {
     text-align: center;
     margin-top: 0;
+}
+
+.weatherDate {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.weatherTime {
+    font-size: 16px;
+    margin-bottom: 32px;
+}
+
+.currentWeatherForecastContainer .weatherDate {
+    font-size: 20px;
+}
+
+.currentWeatherForecastContainer .weatherTime {
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+
+.weatherDate, .weatherTime, .weatherCondition {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.currentWeatherForecastFormat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.forecastIcon {
+    max-width: 75px;
 }
