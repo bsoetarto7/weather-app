@@ -7,15 +7,43 @@ interface Props {
     countryWeatherData: Forecast;
 }
 
-export class WeatherDashboard extends React.Component<Props> {
+interface State {
+    isMobileView: boolean;
+}
+
+export class WeatherDashboard extends React.Component<Props, State> {
+    constructor(props: Props) {
+        super(props);
+        this.state = {
+            isMobileView: window.innerWidth < 768,
+        };
+    }
+
+    public componentDidMount() {
+        window.addEventListener("resize", this.handleResize);
+    }
+
+    public componentWillUnmount() {
+        window.removeEventListener("resize", this.handleResize);
+    }
+
+    private handleResize = () => {
+        if (window.innerWidth < 768) {
+            this.setState({ isMobileView: true });
+        } else {
+            this.setState({ isMobileView: false });
+        }
+    };
+
     private renderForecastWeather = () => {
         const {
             countryWeatherData,
         } = this.props;
+        const { isMobileView } = this.state;
         const weatherData = countryWeatherData.list
             .slice(1)
             .filter((data, index) => !(index % 4) && data.sys.pod === "d")
-            .slice(0, 5)
+            .slice(0, isMobileView ? 2 : 5)
             .map((data) => {
                 const {
                     dt_txt: dtTxt,

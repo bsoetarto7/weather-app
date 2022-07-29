@@ -2,7 +2,7 @@
     background-color: #c6e1f1;
     width: 100vw;
     height: 100vh;
-    padding-top: 60px;
+    padding-top: 30px;
     box-sizing: border-box;
 }
 
@@ -13,4 +13,10 @@
 
 .errorMessage {
     text-align: center;
+}
+
+@media(min-width: 768px) {
+    .App {
+        padding-top: 60px;
+    }
 }

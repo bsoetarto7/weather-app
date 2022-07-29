@@ -1,5 +1,5 @@
 .countrySelectorContainer {
-    margin-bottom: 60px;
+    margin-bottom: 30px;
     display: flex;
     justify-content: space-around;
 }
@@ -8,7 +8,7 @@
     background: transparent;
     border: none;
     margin: 0 8px;
-    font-size: 32px;
+    font-size: 16px;
     color: #5C5E62;
     font-weight: bolder;
 }
@@ -25,4 +25,14 @@
 .countrySelectorBtn.btnActive:hover {
     cursor: default;
     text-decoration: none;
+}
+
+@media(min-width: 768px) {
+    .countrySelectorContainer {
+        margin-bottom: 60px;
+    }
+
+    .countrySelectorBtn {
+        font-size: 32px;
+    }
 }
