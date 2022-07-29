@@ -67,6 +67,7 @@ export interface ForecastWind {
 export interface WeatherForecast {
     isWeatherForecastLoading: boolean;
     weatherForecastData: WeatherForecastData | undefined;
+    errorMessage: string;
 }
 
 export type WeatherForecastData = {

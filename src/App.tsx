@@ -14,6 +14,7 @@ import { CountrySelector, WeatherDahsboard } from "./components";
 export interface StateProps {
     isWeatherForecastLoading: boolean;
     weatherForecastData?: WeatherForecastData;
+    errorMessage: string;
 }
 
 export interface DispatchProps {
@@ -73,6 +74,9 @@ export class App extends React.Component<StateProps & DispatchProps, State> {
                         !!this.props.weatherForecastData && this.props.weatherForecastData[this.state.countrySelected] && 
                         <WeatherDahsboard countryWeatherData={this.props.weatherForecastData[this.state.countrySelected]}/>
                     }
+                    {
+                        !!this.props.errorMessage && <p className="errorMessage">{this.props.errorMessage}</p>
+                    }
                 </div>
             </div>
         );
@@ -91,6 +95,7 @@ export class App extends React.Component<StateProps & DispatchProps, State> {
 const mapStateToProps = (state: StoreState): StateProps => ({
     isWeatherForecastLoading: state.weatherForecast.isWeatherForecastLoading,
     weatherForecastData: state.weatherForecast.weatherForecastData,
+    errorMessage: state.weatherForecast.errorMessage,
 });
 
 const mapDispatchToProps = (dispatch: any): DispatchProps => ({

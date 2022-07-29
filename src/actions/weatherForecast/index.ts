@@ -17,12 +17,12 @@ export const weatherForecastActionCreator: WeatherForecastActionCreator = {
         return async (dispatch: Dispatch) => {
             dispatch({type: weatherActionsTypes.getWeatherForecastLoading});
 
-            const apiWeatherForecastProvider = new ApiWeatherForecastProvider(`https://api.openweathermap.org/data/2.5`, process.env.REACT_APP_WEATHER_API_KEY || "");
+            const apiWeatherForecastProvider = new ApiWeatherForecastProvider(`https://api.openweathermap.org/data/2.5`,  process.env.REACT_APP_WEATHER_API_KEY || "");
             try {
                 const forecastData: Forecast = await apiWeatherForecastProvider.getCurrentWeather(countryCoordinates);
                 dispatch({type: weatherActionsTypes.getWeatherForecastSuccessful, key: countryName, weatherForecastData: forecastData})
-            } catch(e) {
-                console.log(e);
+            } catch(error) {
+                dispatch({type: weatherActionsTypes.getWeatherForecastError, errorMessage: (error as Error).message});
             }
         }
     },

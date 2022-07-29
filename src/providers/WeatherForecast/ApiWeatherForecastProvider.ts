@@ -16,17 +16,23 @@ export class ApiWeatherForecastProvider implements WeatherForecastProvider {
         };
         
         const response = await fetch(`${this.openWeatherApiUrl}/forecast?lat=${countryCoordinates.lat}&lon=${countryCoordinates.lon}&units=metric&appid=${this.openWeatherApiKey}`, options)
+        
         let json;
+        
         try {
             json = await response.json();
         } catch(e) {
             throw new Error("Unable to retrieve weather data");
         }
 
-        const forecastData: Forecast = {
-            ...json,
-        };
-
-        return forecastData;
+        if(response.status === 200) {
+            const forecastData: Forecast = {
+                ...json,
+            };
+    
+            return forecastData;
+        } else {
+            return Promise.reject(new Error("Unable to retrieve weather data"));
+        }
     }
 }

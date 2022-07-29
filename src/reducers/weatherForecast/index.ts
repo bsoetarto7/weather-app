@@ -5,6 +5,7 @@ import { WeatherForecast } from "../../models";
 export const initialWeatherForecastState: WeatherForecast = {
     isWeatherForecastLoading: false,
     weatherForecastData: undefined,
+    errorMessage: "",
 }
 
 export const weatherForecastReducer = (state = initialWeatherForecastState, actions: any) => {
@@ -13,6 +14,7 @@ export const weatherForecastReducer = (state = initialWeatherForecastState, acti
             return {
                 ...state,
                 isWeatherForecastLoading: true,
+                errorMessage: "",
             };
         case weatherActionsTypes.getWeatherForecastSuccessful:
             return {
@@ -27,6 +29,7 @@ export const weatherForecastReducer = (state = initialWeatherForecastState, acti
             return {
                 ...state,
                 isWeatherForecastLoading: false,
+                errorMessage: actions.errorMessage,
             };
         default:
             return state;

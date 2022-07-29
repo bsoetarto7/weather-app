@@ -17,21 +17,21 @@ export class CountrySelector extends React.Component<Props> {
                     type="button"
                     onClick={(event: React.MouseEvent<HTMLButtonElement>) => this.onCountrySelect(event, CountryNames.VANCOUVER)}
                 >
-                        Vancouver
+                    VANCOUVER
                 </button>
                 <button 
                     className={`countrySelectorBtn${this.props.countrySelected === CountryNames.TORONTO ? ` btnActive` : ""}`} 
                     type="button"
                     onClick={(event: React.MouseEvent<HTMLButtonElement>) => this.onCountrySelect(event, CountryNames.TORONTO)}
                 >
-                    Toronto
+                    TORONTO
                 </button>
                 <button 
                     className={`countrySelectorBtn${this.props.countrySelected === CountryNames.OTTAWA ? ` btnActive` : ""}`}
                     type="button"
                     onClick={(event: React.MouseEvent<HTMLButtonElement>) => this.onCountrySelect(event, CountryNames.OTTAWA)}
                 >
-                    Ottawa
+                    OTTAWA
                 </button>
             </div>
         );
