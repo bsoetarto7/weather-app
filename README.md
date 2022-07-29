@@ -2,8 +2,6 @@
 
 Weather app that displays the weather for 3 different cities
 
-&nbsp;
-
 ### Follow the following steps to run this application locally
 
 1. Install latest dependencies.
@@ -19,8 +17,6 @@ Weather app that displays the weather for 3 different cities
 ```
     $ npm start
 ```
-
-&nbsp;
 
 ### Note
 

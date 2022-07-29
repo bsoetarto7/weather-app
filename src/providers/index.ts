@@ -1,2 +1,2 @@
 export * from "./WeatherForecast";
-export * from "./WeatherForecast/ApiWeatherForecastProvider";
+export { default as ApiWeatherForecastProvider } from "./WeatherForecast/ApiWeatherForecastProvider";

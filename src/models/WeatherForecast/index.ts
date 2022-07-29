@@ -1,13 +1,5 @@
 import { CountryCoordinates, CountryNames } from "../Country";
 
-export interface Forecast {
-    cod: string;
-    message: number;
-    cnt: number;
-    city: ForecastCity;
-    list: ForecastList[];
-}
-
 export interface ForecastCity {
     coord: CountryCoordinates;
     country: string;
@@ -17,18 +9,6 @@ export interface ForecastCity {
     sunrise: number;
     sunset: number;
     timezone: number;
-}
-
-export interface ForecastList {
-    clouds: ForecastClouds;
-    dt: number;
-    dt_txt: string;
-    main: ForecastMain;
-    pop: number;
-    sys: ForecastSystem;
-    visibility: number;
-    weather: ForecastWeather[];
-    wind: ForecastWind;
 }
 
 export interface ForecastClouds {
@@ -64,12 +44,32 @@ export interface ForecastWind {
     speed: number;
 }
 
-export interface WeatherForecast {
-    isWeatherForecastLoading: boolean;
-    weatherForecastData: WeatherForecastData | undefined;
-    errorMessage: string;
+export interface ForecastList {
+    clouds: ForecastClouds;
+    dt: number;
+    dt_txt: string;
+    main: ForecastMain;
+    pop: number;
+    sys: ForecastSystem;
+    visibility: number;
+    weather: ForecastWeather[];
+    wind: ForecastWind;
+}
+
+export interface Forecast {
+    cod: string;
+    message: number;
+    cnt: number;
+    city: ForecastCity;
+    list: ForecastList[];
 }
 
 export type WeatherForecastData = {
     [key in CountryNames]: Forecast;
+}
+
+export interface WeatherForecast {
+    isWeatherForecastLoading: boolean;
+    weatherForecastData: WeatherForecastData | undefined;
+    errorMessage: string;
 }

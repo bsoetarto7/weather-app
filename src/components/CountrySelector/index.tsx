@@ -8,26 +8,38 @@ export interface Props {
 }
 
 export class CountrySelector extends React.Component<Props> {
+    private onCountrySelect(event: React.MouseEvent<HTMLButtonElement>, countryName: CountryNames) {
+        event.preventDefault();
 
-    public render(){
+        const {
+            handleCountrySelect,
+        } = this.props;
+
+        handleCountrySelect(countryName);
+    }
+
+    public render() {
+        const {
+            countrySelected,
+        } = this.props;
         return (
             <div className="countrySelectorContainer">
-                <button 
-                    className={`countrySelectorBtn${this.props.countrySelected === CountryNames.VANCOUVER ? ` btnActive` : ""}`}
+                <button
+                    className={`countrySelectorBtn${countrySelected === CountryNames.VANCOUVER ? ` btnActive` : ""}`}
                     type="button"
                     onClick={(event: React.MouseEvent<HTMLButtonElement>) => this.onCountrySelect(event, CountryNames.VANCOUVER)}
                 >
                     VANCOUVER
                 </button>
-                <button 
-                    className={`countrySelectorBtn${this.props.countrySelected === CountryNames.TORONTO ? ` btnActive` : ""}`} 
+                <button
+                    className={`countrySelectorBtn${countrySelected === CountryNames.TORONTO ? ` btnActive` : ""}`}
                     type="button"
                     onClick={(event: React.MouseEvent<HTMLButtonElement>) => this.onCountrySelect(event, CountryNames.TORONTO)}
                 >
                     TORONTO
                 </button>
-                <button 
-                    className={`countrySelectorBtn${this.props.countrySelected === CountryNames.OTTAWA ? ` btnActive` : ""}`}
+                <button
+                    className={`countrySelectorBtn${countrySelected === CountryNames.OTTAWA ? ` btnActive` : ""}`}
                     type="button"
                     onClick={(event: React.MouseEvent<HTMLButtonElement>) => this.onCountrySelect(event, CountryNames.OTTAWA)}
                 >
@@ -35,11 +47,6 @@ export class CountrySelector extends React.Component<Props> {
                 </button>
             </div>
         );
-    }
-
-    private onCountrySelect(event: React.MouseEvent<HTMLButtonElement>, countryName: CountryNames) {
-        event.preventDefault();
-        this.props.handleCountrySelect(countryName);
     }
 }
 
